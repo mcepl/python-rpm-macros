@@ -1,7 +1,5 @@
 ##### macro definitions for flavor "#FLAVOR#" #####
 
-%__#FLAVOR#               /usr/bin/#FLAVOR#
-
 %#FLAVOR#_shbang_opts     %py_shbang_opts
 
 %#FLAVOR#_prefix          #FLAVOR#
@@ -9,6 +7,8 @@
 %#FLAVOR#_sitearch        %{_python_sysconfig_path #FLAVOR# platlib}
 %#FLAVOR#_version         %{_python_sysconfig_var #FLAVOR# py_version_short}
 %#FLAVOR#_version_nodots  %{_python_sysconfig_var #FLAVOR# py_version_nodot}
+
+%__#FLAVOR#               /usr/bin/python%{#FLAVOR#_version}
 
 %#FLAVOR#_sysconfig_path() %{_rec_macro_helper}%{lua:call_sysconfig("path", "#FLAVOR#")}
 %#FLAVOR#_sysconfig_var()  %{_rec_macro_helper}%{lua:call_sysconfig("var", "#FLAVOR#")}
